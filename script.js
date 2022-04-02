@@ -53,8 +53,8 @@ var characterUse = function() {
       else {
         window.alert("Please enter a valid option for lowercase letter use.")
         return characterLower();
-      };
-    }
+      }
+    };
     
     var characterUpper = function(){
       var characterPromptUpper = window.prompt(
@@ -80,6 +80,7 @@ var characterUse = function() {
         return characterUpper();
       }
     };
+
     var characterNum = function(){
         var characterPromptNum = window.prompt(
           "Would you like to use Numbers? Type 1 if yes and 2 if no."
@@ -135,7 +136,11 @@ var characterUse = function() {
         window.alert("You must select at least one character option to use in your password.")
         return characterLower();
       }
-      };
+      else {
+          writePassword()
+      }
+    };
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
