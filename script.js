@@ -27,7 +27,59 @@ var passwordLength = function() {
       characterLower();
     }
   };
+
+  var characterUse = function() {
   
+    //sets up the characterUse function to be called if the passwordLength has a valid response
+    var characterLower = function(){
+      var characterPromptLower = window.prompt(
+        "Would you like to use Lowercase letters? Type 1 if yes and 2 if no."
+      );
+      
+      //Convert answer in prompt to an actual number
+      characterPromptLower = parseInt(characterPromptLower);
+      
+      //Using if/else to decide how to react to prompt entry
+      if (characterPromptLower === 1) {
+        //include the lowerArr array
+        characterUpper();
+      }
+    
+      if (characterPromptLower === 2) {
+        //do not include the lowerArr array
+        characterUpper();
+      }
+    
+      else {
+        window.alert("Please enter a valid option for lowercase letter use.")
+        return characterLower();
+      };
+    }
+    
+    var characterUpper = function(){
+      var characterPromptUpper = window.prompt(
+        "Would you like to use Uppercase letters? Type 1 if yes and 2 if no."
+      );
+        
+      //Convert answer in prompt to an actual number
+      characterPromptUpper = parseInt(characterPromptUpper);
+        
+      //Using if/else to decide how to react to prompt entry
+      if (characterPromptUpper === 1) {
+        //include the upperArr array
+        characterNum();
+      }
+    
+      if (characterPromptUpper === 2) {
+        //do not include the upperArr array
+        characterNum();
+      }
+    
+      else {
+        window.alert("Please enter a valid option for uppercase letter use.")
+        return characterUpper();
+      }
+    };
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
