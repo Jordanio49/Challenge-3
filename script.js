@@ -136,6 +136,7 @@ var characterUse = function() {
         window.alert("You must select at least one character option to use in your password.")
         return characterLower();
       }
+      
       else {
           writePassword()
       }
