@@ -7,6 +7,27 @@ var lowerArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 
 var specialArr = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "=", "_", "[", "{", "}", "]", ":", ";", "'", '"', "<", ",", ">", ".", "?", "/", "~", "`"]
 
+var passwordLength = function() {
+
+    //ask how long the user wants the password to be
+    var prompLength = window.prompt("How long would you like the password to be? Enter a number from 8 to 128.");
+    
+    //turns the value entered into a number
+    promptLength = promptLength.number();
+    
+    //validate the response
+    if (promptLength < 8 || promptLength > 128) {
+      window.alert("Please enter a value from 8 to 128.");
+      //use return to stop function and call it again 
+      return passwordLength();
+    }
+    
+    //if valid move on to the characterUse function
+    if (promptLength >= 8 && promptLength <= 128) {
+      characterLower();
+    }
+  };
+  
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
