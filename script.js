@@ -28,7 +28,7 @@ var passwordLength = function() {
     }
   };
 
-  var characterUse = function() {
+var characterUse = function() {
   
     //sets up the characterUse function to be called if the passwordLength has a valid response
     var characterLower = function(){
@@ -80,6 +80,62 @@ var passwordLength = function() {
         return characterUpper();
       }
     };
+    var characterNum = function(){
+        var characterPromptNum = window.prompt(
+          "Would you like to use Numbers? Type 1 if yes and 2 if no."
+        );
+          
+        //Convert answer in prompt to an actual number
+        characterPromptNum = parseInt(characterPromptNum);
+          
+        //Using if/else to decide how to react to prompt entry
+        if (characterPromptNum === 1) {
+          //include the numArr array
+          characterSpecial();
+        }
+      
+        if (characterPromptNum === 2) {
+          //do not include the numArr array
+          characterSpecial();
+        }
+      
+        else {
+          window.alert("Please enter a valid option for number use.")
+          return characterNum();
+        }
+      };
+        
+      var characterSpecial = function(){
+        var characterPromptSpecial = window.prompt(
+          "Would you like to use Specieal characters? Type '1' if yes and '2' if no."
+        );
+          
+        //Convert answer in prompt to an actual number
+        characterPromptSpecial = parseInt(characterPromptSpecial);
+          
+        //Using if/else to decide how to react to prompt entry
+        if (characterPromptSpecial === 1) {
+          //include the specialArr array
+          writePassword();
+        }
+      
+        if (characterPromptSpecial === 2) {
+          //do not include the specialArr array
+          writePassword();
+        }
+      
+        else {
+          window.alert("Please enter a valid option.")
+          return characterSpecial();
+        }
+      };
+      
+      //If they select no arrays to be used send them back to the start of characterprompts
+      if (characterPromptLower === 2 && characterPromptUpper === 2 && characterPromptNum === 2 && characterPromptSpecial === 2) {
+        window.alert("You must select at least one character option to use in your password.")
+        return characterLower();
+      }
+      };
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
