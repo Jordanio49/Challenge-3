@@ -7,29 +7,7 @@ var lowerArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 
 var specialArr = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "=", "_", "[", "{", "}", "]", ":", ";", "'", '"', "<", ",", ">", ".", "?", "/", "~", "`"]
 
-var passwordLength = function() {
-
-    //ask how long the user wants the password to be
-    var prompLength = window.prompt("How long would you like the password to be? Enter a number from 8 to 128.");
-    
-    //turns the value entered into a number
-    promptLength = promptLength.number();
-    
-    //validate the response
-    if (promptLength < 8 || promptLength > 128) {
-      window.alert("Please enter a value from 8 to 128.");
-      //use return to stop function and call it again 
-      return passwordLength();
-    }
-    
-    //if valid move on to the characterUse function
-    if (promptLength >= 8 && promptLength <= 128) {
-      characterLower();
-    }
-  };
-
-var characterUse = function() {
-  
+  function characterLower () {
     //sets up the characterUse function to be called if the passwordLength has a valid response
     var characterLower = function(){
       var characterPromptLower = window.prompt(
@@ -38,12 +16,13 @@ var characterUse = function() {
       
       //Convert answer in prompt to an actual number
       characterPromptLower = parseInt(characterPromptLower);
-      
+
+      // for (i = 0; i < lowerArr.length; i++) {
       //Using if/else to decide how to react to prompt entry
       if (characterPromptLower === 1) {
         //include the lowerArr array
         characterUpper();
-      }
+        }
     
       if (characterPromptLower === 2) {
         //do not include the lowerArr array
@@ -53,6 +32,7 @@ var characterUse = function() {
       else {
         window.alert("Please enter a valid option for lowercase letter use.")
         return characterLower();
+      }
       }
     };
     
@@ -129,18 +109,39 @@ var characterUse = function() {
           window.alert("Please enter a valid option.")
           return characterSpecial();
         }
-      };
+      
       
       //If they select no arrays to be used send them back to the start of characterprompts
-      if (characterPromptLower === 2 && characterPromptUpper === 2 && characterPromptNum === 2 && characterPromptSpecial === 2) {
+      if (characterLower != 1 && characterUpper != 1 && characterNum != 1 && characterSpecial != 1) {
         window.alert("You must select at least one character option to use in your password.")
-        return characterLower();
+        characterLower();
       }
       
       else {
           writePassword()
       }
     };
+
+    var passwordLength = function() { 
+    
+      //ask how long the user wants the password to be
+      var promptLength = window.prompt("How long would you like the password to be? Enter a number from 8 to 128.");
+      
+      //turns the value entered into a number
+      promptLength = parseInt(promptLength);
+      
+      //validate the response
+      if (promptLength < 8 || promptLength > 128) {
+        window.alert("Please enter a value from 8 to 128.");
+        //use return to stop function and call it again 
+        passwordLength()
+      }
+    };
+    
+function generatePassword () {
+  passwordLength();
+  characterLower();
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
