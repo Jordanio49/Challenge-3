@@ -47,6 +47,16 @@ function generatePassword() {
         if (promptSpecial) {
          passwordCharacters += characterKey.specialArr;
         };
+      
+    // created a variable to use the for loop to create the password
+    var password = "";
+    
+    // setting up the for loop to randomly select values from the arrays the user chose to use in their password
+    for (var i = 0; i < promptLength + 1; i++) {
+        password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
+    }
+
+    return password;
 };
 
 console.log(generatePassword());
