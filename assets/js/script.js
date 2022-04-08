@@ -49,19 +49,28 @@ function generatePassword() {
     } 
       
     else {
-      alert("Please select a valid character length")
+      alert("Please select a valid character length!")
       generatePassword();
     };
-      
-    // created a variable to use the for loop to create the password
-    var password = "";
     
-    // setting up the for loop to randomly select values from the arrays the user chose to use in their password based on the length they selected
-    for (var i = 0; i < promptLength; i++) {
+    // use if/else statement to validate whether they chose at least one of the character types.
+    if (!promptLower && !promptUpper && !promptNum && !promptSpecial) {
+      // if they didnt select a character to use then they get an alert and sent back to the start of the function
+      alert("Please choose at least one type of character to use in your password!")
+      generatePassword();
+    }
+
+    // if they did then generate the password according to the criteria
+    else {
+      // created a variable to use the for loop to create the password
+      var password = "";
+    
+      // setting up the for loop to randomly select values from the arrays the user chose to use in their password based on the length they selected
+      for (var i = 0; i < promptLength; i++) {
         //adding the passwordCharacters to the password variable along with math functions
         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
+      }
     }
-    
     return password;
 };
 
