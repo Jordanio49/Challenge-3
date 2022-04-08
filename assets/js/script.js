@@ -13,18 +13,16 @@ function generatePassword() {
   var passwordCharacters = "";
 
     //ask how long the user wants the password to be
-
     var promptLength = prompt("How long would you like the password to be? Enter a number from 8 to 128.");
 
+    //parseInt to return a number value from the prompt
     promptLength = parseInt(promptLength);
     
-    if (promptLength <= 8 && promptLength >= 128) {
-      alert("Please select a valid number of characters!");
-    };
+    // using an if/else statement to either validate they selected a valid number or send them back to the start of the function if they didn't
+    if (promptLength >= 8 && promptLength <= 128) {
 
       // Confirmation prompts for each type of character option
       var promptLower = confirm("Would you like to use Lowercase letters?");
-
         //validating response and choosing to use the array or not
         if (promptLower) {
           // adding the lowerArr characterKey to the passwordCharacters variable if user confirms
@@ -32,28 +30,28 @@ function generatePassword() {
         };
 
       var promptUpper = confirm("Would you like to use Uppercase letters?");
-        
-        //Using if to decide how to react to prompt entry
         if (promptUpper) {
           // adding the upperArr characterKey to the passwordCharacters variable if user confirms
           passwordCharacters += characterKey.upperArr;
         };
 
       var promptNum = confirm("Would you like to use Numbers?");
-          
-        //Using if to decide how to react to prompt entry
         if (promptNum) {
           // adding the numArr characterKey to the passwordCharacters variable if user confirms
           passwordCharacters += characterKey.numArr;
         };
-        
-      var promptSpecial = confirm("Would you like to use Special characters?");
 
-        //Using if to decide how to react to prompt entry
+      var promptSpecial = confirm("Would you like to use Special characters?");
         if (promptSpecial) {
           // adding the specialArr characterKey to the passwordCharacters variable if user confirms
           passwordCharacters += characterKey.specialArr;
         };
+    } 
+      
+    else {
+      alert("Please select a valid character length")
+      generatePassword();
+    };
       
     // created a variable to use the for loop to create the password
     var password = "";
@@ -63,11 +61,10 @@ function generatePassword() {
         //adding the passwordCharacters to the password variable along with math functions
         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
     }
-
+    
     return password;
 };
 
-console.log(generatePassword());
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
