@@ -9,12 +9,15 @@ const characterKey = {
 
 function generatePassword() {
   
+  //created a variable to add the selected characterKeys to
   var passwordCharacters = "";
 
     //ask how long the user wants the password to be
 
     var promptLength = prompt("How long would you like the password to be? Enter a number from 8 to 128.");
 
+    promptLength = parseInt(promptLength);
+    
     if (promptLength <= 8 && promptLength >= 128) {
       alert("Please select a valid number of characters!");
     };
@@ -24,6 +27,7 @@ function generatePassword() {
 
         //validating response and choosing to use the array or not
         if (promptLower) {
+          // adding the lowerArr characterKey to the passwordCharacters variable if user confirms
           passwordCharacters += characterKey.lowerArr;
         };
 
@@ -31,6 +35,7 @@ function generatePassword() {
         
         //Using if to decide how to react to prompt entry
         if (promptUpper) {
+          // adding the upperArr characterKey to the passwordCharacters variable if user confirms
           passwordCharacters += characterKey.upperArr;
         };
 
@@ -38,21 +43,24 @@ function generatePassword() {
           
         //Using if to decide how to react to prompt entry
         if (promptNum) {
-         passwordCharacters += characterKey.numArr;
+          // adding the numArr characterKey to the passwordCharacters variable if user confirms
+          passwordCharacters += characterKey.numArr;
         };
         
       var promptSpecial = confirm("Would you like to use Special characters?");
 
         //Using if to decide how to react to prompt entry
         if (promptSpecial) {
-         passwordCharacters += characterKey.specialArr;
+          // adding the specialArr characterKey to the passwordCharacters variable if user confirms
+          passwordCharacters += characterKey.specialArr;
         };
       
     // created a variable to use the for loop to create the password
     var password = "";
     
-    // setting up the for loop to randomly select values from the arrays the user chose to use in their password
-    for (var i = 0; i < promptLength + 1; i++) {
+    // setting up the for loop to randomly select values from the arrays the user chose to use in their password based on the length they selected
+    for (var i = 0; i < promptLength; i++) {
+        //adding the passwordCharacters to the password variable along with math functions
         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
     }
 
