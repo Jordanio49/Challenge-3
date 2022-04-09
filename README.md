@@ -29,3 +29,7 @@ This project asked that I build a random password generator.
 ![GIF of my Password Generator](assets/images/password-generator.gif)
 
 ## **Link to Page and Repository**
+
+1. Page: https://jordanio49.github.io/password-generator-challenge/
+
+2. Repository: https://github.com/Jordanio49/password-generator-challenge
