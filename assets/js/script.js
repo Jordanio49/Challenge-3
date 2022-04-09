@@ -1,10 +1,10 @@
 // Assignment code here
 // Create a single variable containing character options to be called upon later in the code
-const characterKey = {
+var characterKey = {
   numArr: '1234567890',
   upperArr: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   lowerArr: "abcdefghijklmnopqrstuvwxyz",
-  specialArr: "!@#$%^&*()-+=_[{}]:;<>.?\/~`"
+  specialArr: "!@#$%^&*()-+=_[{}]:;<>.?/~`"
 };
 
 function generatePassword() {
@@ -18,7 +18,7 @@ function generatePassword() {
     //parseInt to return a number value from the prompt
     promptLength = parseInt(promptLength);
     
-    // using an if/else statement to either validate they selected a valid number or send them back to the start of the function if they didn't
+    // using an if/else statement to either validate whether they selected a valid number or send them back to the start of the function if they didn't
     if (promptLength >= 8 && promptLength <= 128) {
 
       // Confirmation prompts for each type of character option
@@ -47,17 +47,16 @@ function generatePassword() {
           passwordCharacters += characterKey.specialArr;
         };
     } 
-      
     else {
       alert("Please select a valid character length!")
-      generatePassword();
+      return false;
     };
     
     // use if/else statement to validate whether they chose at least one of the character types.
     if (!promptLower && !promptUpper && !promptNum && !promptSpecial) {
       // if they didnt select a character to use then they get an alert and sent back to the start of the function
       alert("Please choose at least one type of character to use in your password!")
-      generatePassword();
+      return generatePassword();
     }
 
     // if they did then generate the password according to the criteria
